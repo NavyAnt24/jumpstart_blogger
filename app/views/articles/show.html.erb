@@ -1,5 +1,16 @@
 <h1><%= @article.title %></h1>
+
+<% if @article.tags.count > 0 %>
+	<p>Tags:
+		<% @article.tags.each do |tag| %>
+			<%= link_to tag.name, tag_path(tag) %>
+		<% end %>
+	</p>
+<% end %>
+
+<br>
 <p><%= @article.body %></p>
+<br>
 <%= link_to "edit article", edit_article_path(@article) %>
 <%= link_to "delete article", article_path(@article), method: :delete,
 		data: {confirm: "Really delete the article?"} %>
